@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Proposal | Sarah & Michael</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SCENE 1: THE PROPOSAL -->
+    <section id="proposal-scene" class="scene proposal-bg">
+        <div class="content">
+            <p class="pre-text">On Friday, August 7th...</p>
+            <h1>She said Yes!</h1>
+        </div>
+        <div class="scroll-down-indicator">Scroll to see the magic</div>
+    </section>
+
+    <!-- SCENE 2: THE DRONE & FIREWORKS REVEAL -->
+    <section id="firework-scene" class="scene video-scene">
+        <!-- Background Drone Video -->
+        <video autoplay loop muted playsinline class="bg-video drone-video" id="droneVideo">
+            <source src="images/drone-aerial.mp4" type="video/mp4">
+        </video>
+
+        <!-- Fireworks Overlay Video -->
+        <video autoplay loop muted playsinline class="bg-video fireworks-video" id="fireworksVideo">
+            <source src="images/fireworks-overlay.mp4" type="video/mp4">
+        </video>
+
+        <!-- The Final Text Reveal -->
+        <div class="content reveal-text" id="revealText">
+            <h2>Our Forever Starts Now</h2>
+            <p>Friday, August 7, 2026</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+/* --- General Setup --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Georgia', serif; overflow-x: hidden; height: 200vh; } /* Tall body for scrolling */
+
+.scene {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* --- Scene 1: Proposal --- */
+.proposal-bg {
+    background: url('images/proposal.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.pre-text { font-size: 1.2rem; opacity: 0; animation: fadeIn 1s forwards; }
+.proposal-bg h1 { font-size: 4rem; margin-top: 10px; opacity: 0; animation: fadeIn 1s 0.5s forwards; }
+
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    font-size: 0.9rem;
+    animation: bounce 2s infinite;
+}
+
+
+/* --- Scene 2: Video & Fireworks Overlay --- */
+.video-scene {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background: #000; /* Fallback background */
+}
+
+.bg-video {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures video covers the screen */
+}
+
+.drone-video {
+    z-index: 1; /* Bottom layer */
+}
+
+.fireworks-video {
+    z-index: 2; /* Middle layer */
+    /* This is the key professional trick! */
+    /* It blends the bright fireworks onto the drone footage below */
+    mix-blend-mode: screen; 
+    opacity: 0; /* Start hidden */
+    transition: opacity 2s ease-in;
+}
+
+.reveal-text {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    z-index: 3; /* Top layer */
+    text-align: center;
+    color: white;
+    opacity: 0; /* Start hidden */
+    transition: opacity 2s ease-in 1s; /* Delays text reveal */
+}
+
+/* --- Active States (Triggered by JS) --- */
+.video-scene.active .fireworks-video {
+    opacity: 1;
+}
+
+.video-scene.active .reveal-text {
+    opacity: 1;
+}
+
+
+/* --- Keyframes --- */
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
